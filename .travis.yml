@@ -17,7 +17,7 @@ before_install:
   - sudo dpkg --install wx2.9-headers_2.9.3-1_amd64.deb
   - sudo dpkg --install libwxbase2.9-dev_2.9.3-1_amd64.deb
   - sudo dpkg --install libwxgtk2.9-dev_2.9.3-1_amd64.deb
-  - sudo pip install cpp-coveralls --use-mirrors
+  - pip install cpp-coveralls --use-mirrors
 script:
   - sudo cmake . -DBUILD_CEF=off -DWITH_ARES=off -DDEBUG=on -DFORCE_BUNDLED_WXGTK=off -DWITH_GTEST=ON -DBUILD_TESTS=ON
   - sudo make -j4
