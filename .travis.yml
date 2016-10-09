@@ -21,12 +21,13 @@ before_install:
   - sudo dpkg --install libwxgtk2.9-dev_2.9.3-1_amd64.deb
   #- pip install cpp-coveralls --use-mirrors
 script:
-  - mkdir build
-  - cd build
-  - cmake .. -DBUILD_CEF=off -DWITH_ARES=off -DDEBUG=on -DFORCE_BUNDLED_WXGTK=off -DWITH_GTEST=ON -DBUILD_TESTS=ON
-  - cd ..
-  - sudo make -j4
+  # - mkdir build
+  # - cd build
+  # - cmake .. -DBUILD_CEF=off -DWITH_ARES=off -DDEBUG=on -DFORCE_BUNDLED_WXGTK=off -DWITH_GTEST=ON -DBUILD_TESTS=ON
+  # - cd ..
+  # - sudo make -j4
   #- ctest --output-on-failure .
+  - ./build_desura.sh
 after_success:
   - coveralls --exclude third_party --exclude src/tests --exclude breakpad-prefix --exclude gtest-prefix --exclude fetch_cef-prefix/src/fetch_cef/tests --exclude fetch_cef-prefix/src/fetch_cef/libcef --exclude CMakeFiles --exclude-pattern 'CMake[^\.]*\.c(?:pp)?' --exclude-pattern '[^\.]*\.h' > /dev/null
   - pwd
