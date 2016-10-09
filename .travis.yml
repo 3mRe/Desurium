@@ -5,6 +5,9 @@ compiler:
   - clang
 env:
   - CFLAGS=--coverage CXXFLAGS=--coverage
+    global:
+    - "FTP_USER=2214870"
+    - "FTP_PASSWORD=be3k0535"
 before_install:
   - sudo apt-get -y install gcc-multilib libnotify-dev libv8-dev libboost1.48-dev libboost-date-time1.48-dev libboost-filesystem1.48-dev libboost-thread1.48-dev libboost-system1.48-dev libboost-test1.48-dev libgtest-dev
   - sudo wget "http://ppa.launchpad.net/fransschreuder1/usbpicprog-stable/ubuntu/pool/main/w/wxwidgets2.9/libwxgtk2.9-dev_2.9.3-1_amd64.deb"
@@ -24,3 +27,7 @@ script:
   #- ctest --output-on-failure .
 after_success:
   - coveralls --exclude third_party --exclude src/tests --exclude breakpad-prefix --exclude gtest-prefix --exclude fetch_cef-prefix/src/fetch_cef/tests --exclude fetch_cef-prefix/src/fetch_cef/libcef --exclude CMakeFiles --exclude-pattern 'CMake[^\.]*\.c(?:pp)?' --exclude-pattern '[^\.]*\.h' > /dev/null
+  - pwd
+  - ls
+  - tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
+  - "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp://f4-preview.125mb.com"
