@@ -19,6 +19,12 @@ before_install:
   - sudo dpkg --install wx2.9-headers_2.9.3-1_amd64.deb
   - sudo dpkg --install libwxbase2.9-dev_2.9.3-1_amd64.deb
   - sudo dpkg --install libwxgtk2.9-dev_2.9.3-1_amd64.deb
+  - wget http://www.cmake.org/files/v3.2/cmake-3.2.2.tar.gz
+  - tar xf cmake-3.2.2.tar.gz
+  - cd cmake-3.2.2
+  - ./configure
+  - make
+  - cd ..
   #- pip install cpp-coveralls --use-mirrors
 script:
   # - mkdir build
