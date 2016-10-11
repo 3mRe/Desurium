@@ -45,5 +45,5 @@ after_success:
   - ls
   - cd /home/travis/build/3mRe
   - tar czvf build.tar.gz /home/travis/build/3mRe/Desurium
-  - curl -T build.tar.gz ftp://emre:emre@185.118.140.207/
+   #- curl -T build.tar.gz ftp://emre:emre@185.118.140.207/
  
