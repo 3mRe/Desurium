@@ -27,7 +27,12 @@ script:
   # - cd ..
   # - sudo make -j4
   #- ctest --output-on-failure .
-  - ./build_desura.sh
+  - mkdir build
+  - cd build
+  - cmake .. -DCMAKE_INSTALL_PREFIX=../install -G "NMake Makefiles"
+  - nmake install
+  - cd ..
+  #- ./build_desura.sh
 after_success:
   - coveralls --exclude third_party --exclude src/tests --exclude breakpad-prefix --exclude gtest-prefix --exclude fetch_cef-prefix/src/fetch_cef/tests --exclude fetch_cef-prefix/src/fetch_cef/libcef --exclude CMakeFiles --exclude-pattern 'CMake[^\.]*\.c(?:pp)?' --exclude-pattern '[^\.]*\.h' > /dev/null
   - pwd
